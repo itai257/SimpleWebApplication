@@ -10,9 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      TAG: ${{ steps.date.outputs.tag }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,8 +26,8 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Set tag
-        id: date
-        run: echo "tag=$(date +'%d.%m.%y-%H.%M')" >> $GITHUB_ENV
+        id: set_tag
+        run: echo "TAG=$(date +'%d.%m.%y-%H.%M')" >> $GITHUB_ENV
 
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag simplewebapp:${{ env.TAG }}
