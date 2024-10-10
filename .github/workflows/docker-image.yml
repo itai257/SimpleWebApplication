@@ -30,7 +30,8 @@ jobs:
         run: echo "TAG=$(date +'%d.%m.%y-%H.%M')" >> $GITHUB_ENV
 
       - name: Build the Docker image
-        run: docker build ./SimpleWebApplication --file ./SimpleWebApplication/Dockerfile --tag simplewebapp:${{ env.TAG }}
+        run: docker build . --file ./SimpleWebApplication/Dockerfile --tag simplewebapp:${{ env.TAG }}
+
 
       # Optional: Log in to Docker Hub
       # - name: Log in to Docker Hub
