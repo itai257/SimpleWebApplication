@@ -38,5 +38,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Push the Docker image
+      - name: Push the Docker image with version tag
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/simplewebapp:${{ env.TAG }}
+
+      - name: Push the Docker image with latest tag
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/simplewebapp:latest
